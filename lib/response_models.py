@@ -64,6 +64,21 @@ class Patient(BaseModel):
         orm_mode = True
 
 
+class PatientCreate(BaseModel):
+    first_name: str
+    last_name: str
+    dob: datetime.date
+    ssn: str
+    gender: str
+    address: str
+
+
+class PatientUpdate(BaseModel):
+    address: str
+    first_name: str
+    last_name: str
+
+
 class Hospital(BaseModel):
     id: int
     name: str
@@ -100,3 +115,11 @@ class Insurance(BaseModel):
     provider_name: str
     policy_number: str
     patient_id: int
+
+
+class Appointment(BaseModel):
+    id: int
+    patient_id: int
+    physician_id: int
+    description: str
+    appointment_date: datetime.date
